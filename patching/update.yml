@@ -1,6 +1,6 @@
 ---
-- hosts: kt_qa
-  remote_user: fitombedn
+- hosts: test
+  remote_user: sudo_user
   tasks:
    - name: install updates via yum
      become: yes

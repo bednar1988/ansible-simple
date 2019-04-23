@@ -3,7 +3,7 @@
   become: true
   become_method: sudo
   vars:
-      username: fijakkola
+      username: user
       pub_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCriBv2MjrU4zjT+sKy4R0N5Xm25ffbspOr+95ZR8Le0ClhzA9U3Tlx4tJA+OWeBPteolHFF+PxZBRqJZxb6He+/07vAHAozCaXgLT22DO3/50hxlX00XkMpoVzC5JYPej1zhpiTUZPodvuxZd/r/DmaA0bO6xMBqsYAmmJP+2pmRIjKay026OzuFIJdQr26qHP6HeJlv/NHJd44XLuQAfwsjADhyl5wz1WOYe9l/SX0VQfeXtdWctyuI58wx0y9hpUZK+dWBQuf/Qem5W2HUvn1GbegqPNpXws7J+hoHWsNI1vJiZh3BpbISSNipfGiwYhT/neyrdRk++lzJMXvxb3
   tasks:
   - name: create user

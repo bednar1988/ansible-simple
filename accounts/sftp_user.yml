@@ -1,9 +1,9 @@
 ---
-- hosts: lfisp-vmdmzftp
+- hosts: hostname
   become: true
   become_method: sudo
   vars:
-      username: extespir
+      username: user
   tasks:
   - name: create user
     user:

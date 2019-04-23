@@ -1,6 +1,6 @@
 # install packages required for AD integration
 - hosts: test
-  remote_user: fitombedn
+  remote_user: sudo_user
   become: yes
   become_method: sudo
   tasks:

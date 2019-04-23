@@ -1,18 +1,20 @@
 ---
 - hosts: test
   become: yes
+  vars:
+      username: user
   tasks:
   - name: create .ssh folder
     file:
-      path: /home/orionnet/adm-exttombe/.ssh
+      path: /home/{{ username }}/.ssh
       state: directory
-      owner: adm-exttombe
-      group: "domain users"
+      owner: "{{ username }}"
+      group: "{{ username }}"
       mode: 0700
   - name: copy authorized_keys file
     copy:
-      src: /home/fitombedn/orion/ldap/authorized_keys
-      dest: /home/orionnet/adm-exttombe/.ssh/authorized_keys
-      owner: adm-exttombe
-      group: "domain users"
+      src: /path/to/authorized_keys
+      dest: /home/{{ userame }}/.ssh/authorized_keys
+      owner: "{{ username }}"
+      group: "{{ username }}"
       mode: 0600

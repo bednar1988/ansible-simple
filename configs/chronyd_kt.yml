@@ -1,6 +1,6 @@
 # install chronyd and configure ntp server
-- hosts: kt_pshp
-  remote_user: fitombedn
+- hosts: test
+  remote_user: sudo_user
   become: yes
   become_method: sudo
   tasks:
@@ -10,7 +10,7 @@
             state: present
       - name: copy config file
         copy: 
-            src: /home/fitombedn/kuntien_tiera/chrony_pshp.conf
+            src: /home/sudo_user/configs/chrony.conf
             dest: /etc/chrony.conf
             owner: root
             group: root
