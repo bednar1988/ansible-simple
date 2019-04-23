@@ -1,0 +1,21 @@
+# install packages required for AD integration
+- hosts: test
+  remote_user: fitombedn
+  become: yes
+  become_method: sudo
+  tasks:
+      - name: install sssd adcli authconfig oddjob-mkhomedir for RHEL 6
+        yum:
+            name: 'sssd,adcli,authconfig,oddjob-mkhomedir'
+            state: present
+        when: 
+            - ansible_os_family == "RedHat" 
+            - ansible_distribution_major_version == "6"
+      - name : install sssd realmd adcli authconfig oddjob oddjob-mkhomedir samba-common-tools for RHEL 7
+        yum:
+            name: 'sssd,realmd,adcli,authconfig,oddjob,oddjob-mkhomedir,samba-common-tools'
+            state: present
+        when:
+            - ansible_os_family == "RedHat"
+            - ansible_distribution_major_version == "7"
+

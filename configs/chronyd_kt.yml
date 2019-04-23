@@ -1,0 +1,19 @@
+# install chronyd and configure ntp server
+- hosts: kt_pshp
+  remote_user: fitombedn
+  become: yes
+  become_method: sudo
+  tasks:
+      - name: install chronyd
+        yum:
+            name: 'chrony'
+            state: present
+      - name: copy config file
+        copy: 
+            src: /home/fitombedn/kuntien_tiera/chrony_pshp.conf
+            dest: /etc/chrony.conf
+            owner: root
+            group: root
+            mode: 0644
+      - name: start and enable chronyd
+        systemd: name=chronyd state=restarted enabled=True

@@ -1,0 +1,25 @@
+---
+- hosts: lfisp-vmdmzftp
+  become: true
+  become_method: sudo
+  vars:
+      username: extespir
+  tasks:
+  - name: create user
+    user:
+      name:  "{{ username }}"
+      state: present
+  - block:
+    - name: change ownership
+      file:
+        path: /home/{{ username }}/
+        owner: root
+        group: root
+        mode: 0755
+    - name: create folder
+      file:
+        path: /home/{{ username }}/home/{{ username }}/
+        state: directory
+        owner: "{{ username }}"
+        group: "{{ username }}"
+        mode: 0755

@@ -1,0 +1,12 @@
+---
+- hosts: prod
+  become: yes
+  tasks:
+  - name: add patching cron job for 4th Saturday
+    cron:
+        name: "Production patching, 4th Saturday at 0:00"
+        minute: 0
+        hour: 0
+        day: 22-28
+        job: 'test `date +\%u` -eq 6 && { /usr/bin/yum update -y && /sbin/reboot; }'
+        state: present

@@ -1,0 +1,12 @@
+---
+- hosts: test_and_valid
+  become: yes
+  tasks:
+  - name: add patching cron job for 3rd Saturday
+    cron:
+        name: "Test and Validation patching, 3rd Saturday at 0:00"
+        minute: 0
+        hour: 0
+        day: 15-21
+        job: 'test `date +\%u` -eq 6 && { /usr/bin/yum update -y && /sbin/reboot; }'
+        state: present

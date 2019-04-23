@@ -1,0 +1,10 @@
+---
+- hosts: kt_qa
+  remote_user: fitombedn
+  tasks:
+   - name: install updates via yum
+     become: yes
+     become_method: sudo
+     yum:
+       name: '*'
+       state: latest

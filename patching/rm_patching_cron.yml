@@ -1,0 +1,8 @@
+---
+- hosts: test_and_valid
+  become: yes
+  tasks:
+  - name: remove patching cron job for 3rd Saturday
+    cron:
+        name: "Test and Validation patching, 3rd Saturday at 0:00"
+        state: absent
